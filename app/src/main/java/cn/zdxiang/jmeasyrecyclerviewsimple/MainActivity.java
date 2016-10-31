@@ -34,12 +34,12 @@ public class MainActivity extends AppCompatActivity implements OnLoadMoreListene
         mAdapter = new MyAdapter();
         mAdapter.setOnLoadMoreRetryListener(this);
         recyclerView.setAdapter(mAdapter);
-
+        recyclerView.setRefreshing(true);
         initData();
     }
 
     private void initData() {
-        recyclerView.setRefreshing(true);
+
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -68,12 +68,26 @@ public class MainActivity extends AppCompatActivity implements OnLoadMoreListene
         return strings;
     }
 
-    private List<String> getMoreData() {
-        List<String> strings = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            strings.add(i, "NewText" + (i + 1));
-        }
-        return strings;
+    private void getMoreData() {
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdapter.addList(getData());
+                    }
+                });
+            }
+        });
+        thread.start();
     }
 
     @Override
@@ -83,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements OnLoadMoreListene
 
     @Override
     public void onLoadMore(int overallItemsCount, int itemsBeforeMore, int maxLastVisiblePosition) {
-        mAdapter.addList(getMoreData());
+        getMoreData();
     }
 
     @Override

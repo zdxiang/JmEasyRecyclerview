@@ -26,6 +26,7 @@ public class MyAdapter extends JMEasyAdapter {
 
     public void initList(List<String> list) {
         this.mList = list;
+        notifyDataSetChanged();
     }
 
     public void addList(List<String> list) {

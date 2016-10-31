@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<cn.zdxiang.jmeasyrecyclerview.JMEasyRecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+    android:id="@+id/jm_erv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cn.zdxiang.jmeasyrecyclerviewsimple.MainActivity">
-
-    <cn.zdxiang.jmeasyrecyclerview.JMEasyRecyclerView
-        android:id="@+id/jm_erv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_empty="@layout/empty_view"
-        app:layout_error="@layout/error_view"
-        app:recyclerClipToPadding="false"
-        app:recyclerPadding="16dp"
-        app:scrollbarStyle="outsideOverlay" />
-</RelativeLayout>
+    app:layout_empty="@layout/empty_view"
+    app:layout_error="@layout/error_view"
+    app:recyclerClipToPadding="false"
+    app:recyclerPadding="16dp"
+    app:scrollbarStyle="outsideOverlay" />

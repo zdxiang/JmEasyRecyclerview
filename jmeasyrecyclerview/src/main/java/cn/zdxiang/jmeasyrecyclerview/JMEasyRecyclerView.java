@@ -389,6 +389,7 @@ public class JMEasyRecyclerView extends FrameLayout {
 
     public void setRefreshing(boolean refreshing) {
         if (getAdapter().getItemCount() == 0) {
+            Log.d("gongxifa", "refreshing");
             mSwipeRefreshLayout.setRefreshing(refreshing);
         }
     }
